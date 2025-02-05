@@ -28,13 +28,13 @@
                         <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                             <ul class="navigation left-nav clearfix">
 
-                                <li class="current dropdown"><a href="#">Studio</a>
+                                <li class="current dropdown"><a href="#">{{ __('header.studio') }}</a>
                                     <ul>
                                         <li><a href="portfolio.html">Portfolio</a></li>
                                         <li><a href="project-detail.html">Portfolio Detail</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Works</a>
+                                <li class="dropdown"><a href="#">{{ __('header.gallery') }}</a>
                                     <ul>
                                         <li><a href="about.html">About Us</a></li>
                                     </ul>
@@ -42,13 +42,13 @@
                             </ul>
 
                             <ul class="navigation right-nav clearfix">
-                                <li class="dropdown"><a href="#">News</a>
+                                <li class="dropdown"><a href="#">{{ __('header.about') }}</a>
                                     <ul>
                                         <li><a href="blog.html">Our Blog</a></li>
                                         <li><a href="blog-detail.html">Blog Detail</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.html">{{ __('header.contact') }}</a></li>
                             </ul>
 
                         </div>
@@ -66,8 +66,8 @@
                     <!-- Outer Box -->
                     <div class="outer-box">
                         <ul class="language-nav">
-                            <li><a href="#">Eng</a></li>
-                            <li><a href="#">Fra</a></li>
+                            <li><a href="{{route('change.lang', ['lang' => 'en'])}}">Eng</a></li>
+                            <li><a href="{{route('change.lang', ['lang' => 'id'])}}">Ind</a></li>
                         </ul>
                     </div>
 
