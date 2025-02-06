@@ -17,4 +17,15 @@ return [
     'password' => 'Kata sandi yang diberikan salah.',
     'throttle' => 'Terlalu banyak percobaan masuk. Silakan coba lagi dalam :seconds detik.',
 
+    'login' => 'Masuk',
+    'register' => 'Daftar',
+    'logout' => 'Keluar',
+    'login_title' => 'Silahkan Masuk Untuk Melanjutkan',
+    'register_title' => 'Silahkan Daftar Untuk Melanjutkan',
+    'email' => 'Alamat Email',
+    'password' => 'Kata Sandi',
+    'remember' => 'Ingat Saya',
+    'forgot' => 'Lupa Kata Sandi?',
+    'no_account' => 'Belum Punya Akun? ',
+
 ];
