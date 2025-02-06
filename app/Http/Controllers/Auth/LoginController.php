@@ -34,4 +34,9 @@ class LoginController extends Controller
             return redirect()->route('login')->with('error', 'Username/Email and password are incorrect, please try again');
         }
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

@@ -80,18 +80,9 @@
         </div>
         <!--end::Menu sub-->
     </div>
-    <!--end::Menu item-->
-    <!--begin::Menu item-->
-    <div class="menu-item px-5 my-1">
-        <a href="?page=account/settings" class="menu-link px-5">
-            Account Settings
-        </a>
-    </div>
-    <!--end::Menu item-->
-    <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="?page=authentication/layouts/corporate/sign-in" class="menu-link px-5">
-            Sign Out
+        <a href="{{ route("logout") }}" class="menu-link px-5">
+            keluar
         </a>
     </div>
     <!--end::Menu item-->
