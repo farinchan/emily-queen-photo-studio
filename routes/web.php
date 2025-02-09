@@ -1,5 +1,5 @@
 <?php
-
+;
 use Illuminate\Support\Facades\Route;
 
 Route::get('lang', [App\Http\Controllers\LanguageController::class, 'change'])->name("change.lang");
@@ -12,7 +12,7 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index']
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('back')->name('back.')->group(function () {
+Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Back\DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('gallery')->name('gallery.')->group(function () {
@@ -34,5 +34,10 @@ Route::prefix('back')->name('back.')->group(function () {
         Route::get('/{id}/edit', [App\Http\Controllers\Back\UserController::class, 'edit'])->name('edit');
         Route::put('/{id}/edit', [App\Http\Controllers\Back\UserController::class, 'update'])->name('update');
         Route::delete('/{id}/delete', [App\Http\Controllers\Back\UserController::class, 'delete'])->name('delete');
+    });
+    Route::prefix('setting')->name('setting.')->group(function () {
+        Route::get('/website', [App\Http\Controllers\back\SettingController::class, 'website'])->name('website');
+        Route::put('/website', [App\Http\Controllers\back\SettingController::class, 'websiteUpdate'])->name('website.update');
+        Route::put('/website/info', [App\Http\Controllers\back\SettingController::class, 'informationUpdate'])->name('website.info');
     });
 });

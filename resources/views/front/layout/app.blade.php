@@ -64,6 +64,7 @@
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}" />
+    @yield('styles')
 </head>
 
 <body>
@@ -83,15 +84,16 @@
     <!-- Scroll To Top -->
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon-arrow-up-circle"></span></div>
 
+
     <!-- Vendor JS -->
-    <!-- <script src="{{ asset('front/js/vendor/jquery.js') }}"></script>
+    <script src="{{ asset('front/js/vendor/jquery.js') }}"></script>
     <script src="{{ asset('front/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('front/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('front/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
-    <script src="{{ asset('front/js/vendor/modernizr-3.11.2.min.js') }}"></script> -->
+    <script src="{{ asset('front/js/vendor/modernizr-3.11.2.min.js') }}"></script>
 
     <!--Plugins JS-->
-    <!-- <script src="{{ asset('front/js/plugins/owl.js') }}"></script>
+    <script src="{{ asset('front/js/plugins/owl.js') }}"></script>
     <script src="{{ asset('front/js/plugins/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script src="{{ asset('front/js/plugins/jquery.fancybox.js') }}"></script>
     <script src="{{ asset('front/js/plugins/wow.js') }}"></script>
@@ -100,11 +102,17 @@
     <script src="{{ asset('front/js/plugins/jquery.scrollTo.js') }}"></script> -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <script src="{{ asset('front/js/vendor/vendor.min.js') }}"></script>
-    <script src="{{ asset('front/js/plugins/plugins.min.js') }}"></script>
+    {{-- <script src="{{ asset('front/js/vendor/vendor.min.js') }}"></script>
+    <script src="{{ asset('front/js/plugins/plugins.min.js') }}"></script> --}}
 
     <!-- Main Js -->
-    <script src="{{ asset('front/js/main.js') }}"></script>
+    @if (request()->routeIs('front.index'))
+        <script src="{{ asset('front/js/main.js') }}"></script>
+    @else
+        <script src="{{ asset('front/js/main_another.js') }}"></script>
+    @endif
+
+    @yield('scripts')
 
 </body>
 

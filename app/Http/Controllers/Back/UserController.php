@@ -17,7 +17,7 @@ class UserController extends Controller
         $data = [
             'title' => 'List Pengguna',
             'menu' => 'Pengguna',
-            'submenu' => '',
+            'sub_menu' => '',
             'users' => User::all()
         ];
 
@@ -29,7 +29,7 @@ class UserController extends Controller
         $data = [
             'title' => 'Tambah Pengguna',
             'menu' => 'Pengguna',
-            'submenu' => '',
+            'sub_menu' => '',
         ];
 
         return view('back.pages.user.create', $data);
@@ -87,7 +87,7 @@ class UserController extends Controller
         $data = [
             'title' => 'Edit Pengguna',
             'menu' => 'Pengguna',
-            'submenu' => '',
+            'sub_menu' => '',
             'user' => User::find($id)
         ];
 

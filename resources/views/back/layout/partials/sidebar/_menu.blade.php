@@ -137,7 +137,7 @@
                 </div>
 
                 <div class= "menu-item">
-                    <a class="menu-link active" href="">
+                    <a class="menu-link @if (request()->routeIs('back.user.*')) active @endif" href="{{ route('back.user.index') }}">   
                         <span class="menu-icon">
                             <i class="ki-duotone ki-profile-user fs-2">
                                 <span class="path1"></span>
@@ -150,7 +150,7 @@
                     </a>
                 </div>
 
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.setting.*')) here show @endif">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-setting-2 fs-2">
@@ -163,7 +163,8 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link " href="">
+                            <a class="menu-link @if (request()->routeIs('back.setting.website')) active @endif"
+                                href="{{ route('back.setting.website') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

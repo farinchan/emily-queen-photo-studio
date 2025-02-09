@@ -13,8 +13,8 @@ class DashboardController extends Controller
         $data = [
             'title' => 'Dashboard',
             'menu' => 'dashboard',
-            'submenu' => '',
-            
+            'sub_menu' => '',
+
         ];
         return view('back.pages.dashboard.index', $data);
     }

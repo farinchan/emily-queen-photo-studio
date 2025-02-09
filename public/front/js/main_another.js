@@ -4,47 +4,8 @@
 
 
 
-    //Update Header Style and Scroll to Top
-    function headerStyle() {
-        if ($('.main-header').length) {
-            var windowpos = $(window).scrollTop();
-            var siteHeader = $('.main-header');
-            var scrollLink = $('.scroll-to-top');
-            if (windowpos >= 1) {
-                siteHeader.addClass('fixed-header');
-                scrollLink.fadeIn(300);
-            } else {
-                siteHeader.removeClass('fixed-header');
-                scrollLink.fadeOut(300);
-            }
-        }
-    }
-
-    headerStyle();
 
 
-
-
-    //Update Header Style and Scroll to Top
-    function headerStyle() {
-        if ($('.main-header').length) {
-            var windowpos = $(window).scrollTop();
-            var siteHeader = $('.main-header');
-            var scrollLink = $('.scroll-to-top');
-            var sticky_header = $('.main-header .sticky-header');
-            if (windowpos > 100) {
-                siteHeader.addClass('fixed-header');
-                sticky_header.addClass("animated slideInDown");
-                scrollLink.fadeIn(300);
-            } else {
-                siteHeader.removeClass('fixed-header');
-                sticky_header.removeClass("animated slideInDown");
-                scrollLink.fadeOut(300);
-            }
-        }
-    }
-
-    headerStyle();
 
 
 
@@ -308,15 +269,6 @@
         });
         wow.init();
     }
-
-
-    /* ==========================================================================
-       When document is Scrollig, do
-       ========================================================================== */
-
-    $(window).on('scroll', function() {
-        headerStyle();
-    });
 
 
 
