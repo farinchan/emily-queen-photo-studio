@@ -49,8 +49,8 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <a href="#" class="symbol symbol-50px">
-                                                <span class="symbol-label"
-                                                    style="background-image:url({{ $album->getThumbnail() }});"></span>
+                                                {{-- <span class="symbol-label"
+                                                    style="background-image:url({{ $album->getThumbnail() }});"></span> --}}
                                             </a>
                                             <div class="ms-5">
                                                 <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1"
@@ -61,7 +61,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="">{{ $album->user?->teacher?->name }}</div>
+                                        <div class="">{{ $album->user?->name }}</div>
                                     </td>
                                     <td>
                                         <div class="">{{ $album->created_at->format('d M Y') }}</div>

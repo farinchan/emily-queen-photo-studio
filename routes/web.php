@@ -35,6 +35,11 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
         Route::put('/status', [App\Http\Controllers\Back\TestimonialController::class, 'changeStatus'])->name('status');
     });
 
+    Route::prefix('message')->name('message.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Back\MessageController::class, 'index'])->name('index');
+        Route::delete('/{id}', [App\Http\Controllers\Back\MessageController::class, 'destroy'])->name('destroy');
+    });
+
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/', [App\Http\Controllers\Back\UserController::class, 'index'])->name('index');
         Route::get('/create', [App\Http\Controllers\Back\UserController::class, 'create'])->name('create');

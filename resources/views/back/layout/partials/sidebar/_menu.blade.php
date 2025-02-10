@@ -120,7 +120,7 @@
                 </div>
                 <div class="menu-item">
                     <a class="menu-link @if (request()->routeIs('back.gallery.setting')) active @endif"
-                    href="{{ route('back.testimonial.index') }}">
+                        href="{{ route('back.testimonial.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-like-tag fs-2">
                                 <span class="path1"></span>
@@ -138,7 +138,8 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="">
+                    <a class="menu-link @if (request()->routeIs('back.message.index')) active @endif"
+                        href="{{ route('back.message.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-sms fs-2">
                                 <span class="path1"></span>

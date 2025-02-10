@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\message;
+use App\Models\Message;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -55,7 +55,7 @@ class HomeController extends Controller
         }
 
         try {
-            $message = new message();
+            $message = new Message();
             $message->name = $request->name;
             $message->email = $request->email;
             $message->phone = $request->phone;
