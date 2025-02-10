@@ -115,7 +115,20 @@
                                 <span class="menu-title">Foto & Video</span>
                             </a>
                         </div>
+
                     </div>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (request()->routeIs('back.gallery.setting')) active @endif"
+                    href="{{ route('back.testimonial.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-like-tag fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Testimonial</span>
+                    </a>
                 </div>
 
                 <div class="menu-item pt-5">
@@ -137,7 +150,8 @@
                 </div>
 
                 <div class= "menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.user.*')) active @endif" href="{{ route('back.user.index') }}">   
+                    <a class="menu-link @if (request()->routeIs('back.user.*')) active @endif"
+                        href="{{ route('back.user.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-profile-user fs-2">
                                 <span class="path1"></span>
@@ -150,7 +164,8 @@
                     </a>
                 </div>
 
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.setting.*')) here show @endif">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion @if (request()->routeIs('back.setting.*')) here show @endif">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-setting-2 fs-2">

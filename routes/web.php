@@ -27,6 +27,14 @@ Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
         Route::delete('/delete/{id}', [App\Http\Controllers\Back\GalleryController::class, 'destroy'])->name('destroy');
     });
 
+    Route::prefix('testimonial')->name('testimonial.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Back\TestimonialController::class, 'index'])->name('index');
+        Route::post('/create', [App\Http\Controllers\Back\TestimonialController::class, 'store'])->name('store');
+        Route::put('/edit/{id}', [App\Http\Controllers\Back\TestimonialController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [App\Http\Controllers\Back\TestimonialController::class, 'destroy'])->name('destroy');
+        Route::put('/status', [App\Http\Controllers\Back\TestimonialController::class, 'changeStatus'])->name('status');
+    });
+
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/', [App\Http\Controllers\Back\UserController::class, 'index'])->name('index');
         Route::get('/create', [App\Http\Controllers\Back\UserController::class, 'create'])->name('create');

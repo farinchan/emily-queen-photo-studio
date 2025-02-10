@@ -1182,7 +1182,7 @@
     <!-- End Pricing Section -->
 
     <!-- Press Section -->
-    <section class="press-section">
+    {{-- <section class="press-section">
         <div class="auto-container">
             <div class="sec-title centered">
                 <h2>our press</h2>
@@ -1219,7 +1219,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- End Press Section -->
 
     <!-- Testimonial Section -->
