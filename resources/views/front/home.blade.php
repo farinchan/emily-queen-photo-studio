@@ -70,6 +70,8 @@
             </div>
             <div class="row clearfix m-0">
 
+
+
                 <!-- Service Block -->
                 <div class="service-block col-lg-4 col-md-6 col-sm-12 p-0 mb-md-30px">
                     <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
@@ -1292,6 +1294,25 @@
             </div>
         </div>
     </section>
+
+    <section class="testimonial-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <h2>Instagram Post</h2>
+            </div>
+            <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2152457" data-tags="false"  view-url="https://widget.tagembed.com/2152457"></div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <h2>Titkok Post</h2>
+            </div>
+            <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2152447" data-tags="false"
+                view-url="https://widget.tagembed.com/2152447"></div>
+        </div>
+    </section>
     <!-- End Testimonial Section -->
 
     <!--Clients Section-->
@@ -1342,4 +1363,9 @@
         </div>
     </section>
     <!--End Clients Section-->
+@endsection
+
+@section("scripts")
+<script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+
 @endsection

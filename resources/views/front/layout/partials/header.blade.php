@@ -30,13 +30,7 @@
 
                          <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                              <ul class="navigation left-nav clearfix">
-
-                                 <li class="current dropdown"><a href="#">{{ __('header.studio') }}</a>
-                                     <ul>
-                                         <li><a href="portfolio.html">Portfolio</a></li>
-                                         <li><a href="project-detail.html">Portfolio Detail</a></li>
-                                     </ul>
-                                 </li>
+                                <li><a href="{{ route('front.index') }}">{{ __('header.studio') }}</a></li>
                                  <li class="dropdown"><a href="#">{{ __('header.gallery') }}</a>
                                      <ul>
                                          <li><a href="about.html">About Us</a></li>
@@ -45,12 +39,7 @@
                              </ul>
 
                              <ul class="navigation right-nav clearfix">
-                                 <li class="dropdown"><a href="{{ route('front.about') }}">{{ __('header.about') }}</a>
-                                     <ul>
-                                         <li><a href="blog.html">Our Blog</a></li>
-                                         <li><a href="blog-detail.html">Blog Detail</a></li>
-                                     </ul>
-                                 </li>
+                                 <li><a href="{{ route('front.about') }}">{{ __('header.about') }}</a></li>
                                  <li><a href="{{ route('front.contact') }}">{{ __('header.contact') }}</a></li>
                              </ul>
 
@@ -60,9 +49,10 @@
 
                      <!-- Social Box -->
                      <ul class="social-box">
-                         <li><a href="https://twitter.com/"><span class="icofont-twitter"></span></a></li>
-                         <li><a href="https://www.behance.net/"><span class="icofont-behance"></span></a></li>
-                         <li><a href="https://www.instagram.com/"><span class="icofont-instagram"></span></a>
+                         <li><a href="{{ $setting_web->twitter }}"><span class="icofont-twitter"></span></a></li>
+                         <li><a href="{{ $setting_web->instagram }}"><span class="icofont-instagram"></span></a></li>
+                         <li><a href="{{ $setting_web->tiktok }}"><span class="icofont-tiktok"></span></a></li>
+                         <li><a href="{{ $setting_web->linkedin }}"><span class="icofont-linkedin"></span></a></li>
                          </li>
                      </ul>
 

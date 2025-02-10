@@ -8,28 +8,28 @@
                 <!-- Footer Column -->
                 <div class="footer-column col-lg-4 col-md-6 col-sm-12">
                     <div class="footer-widget office-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <h4>office</h4>
+                        <h4>Studio</h4>
                         <ul class="location-list">
-                            <li>166 Main Street, Beverly Hills, CA, 90210 <br> United States</li>
-                            <li><a href="mailto:hello@Oberostudio.co">hello@Oberostudio.co</a></li>
-                            <li><a href="tel:+0085-346-2188">+0085 346 2188</a></li>
+                            <li>
+                                {{ $setting_web->address }}
+                            </li>
+                            <li><a href="mailto:{{ $setting_web->email }}?Subject=Halo%20{{ $setting_web->name }}">{{ $setting_web->email }}</a></li>
+                            <li><a href="tel:{{ $setting_web->phone }}">{{ $setting_web->phone }}</a></li>
                         </ul>
                         <!-- Social Box -->
                         <ul class="social-box">
+
+                            <li class="instagram">
+                                <a href="https://www.instagram.com/" class="icofont-instagram"></a>
+                            </li>
                             <li>
                                 <a href="https://twitter.com/" class="icofont-twitter"></a>
                             </li>
-                            <li class="facebook">
-                                <a href="http://facebook.com/" class="icofont-facebook"></a>
+                            <li>
+                                <a href="https://www.tiktok.com/" class="icofont-tiktok"></a>
                             </li>
-                            <li class="google">
-                                <a href="https://www.google.com/" class="icofont-google-plus"></a>
-                            </li>
-                            <li class="behance">
-                                <a href="https://www.behance.net/" class="icofont-behance"></a>
-                            </li>
-                            <li class="instagram">
-                                <a href="https://www.instagram.com/" class="icofont-instagram"></a>
+                            <li>
+                                <a href="https://www.linkedin.com/" class="icofont-linkedin"></a>
                             </li>
                         </ul>
                     </div>
@@ -39,7 +39,8 @@
                 <div class="footer-column col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget logo-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/footer-logo.png" alt="" /></a>
+                            <a href="{{ route("front.index") }}"><img src="{{ asset("ext_image/logo_color.png") }}" style="width: 250px;"
+                                 alt="" /></a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +70,7 @@
                 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
                 <script type="text/javascript">
                     document.write(new Date().getFullYear());
-                </script> <span class="text-black">OBERO</span>. Made with <i class="icofont-heart text-danger" aria-hidden="true"></i> by <a href="https://hasthemes.com/" target="_blank">HasThemes</a>
+                </script> <span class="text-black"> {{ $setting_web->name }}</span> All Rights Reserved.
             </div>
         </div>
     </div>

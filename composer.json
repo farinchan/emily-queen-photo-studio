@@ -14,7 +14,8 @@
         "realrashid/sweet-alert": "^7.2",
         "spatie/laravel-activitylog": "^4.9",
         "spatie/laravel-permission": "^6.13",
-        "stevebauman/location": "^7.4"
+        "stevebauman/location": "^7.4",
+        "stichoza/google-translate-php": "^5.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -2,9 +2,12 @@
 <html lang="en-US">
 
 <head>
+    @php
+        $setting_web = \App\Models\SettingWebsite::first();
+    @endphp
     <meta charset="UTF-8">
-    <title>Obero - Digital Agency Bootstrap HTML Template</title>
-    <meta name="description" content="Obero is a free Bootstrap HTML Template for Digital Agency" />
+    <title>{{ $setting_web->name }}</title>
+    <meta name="description" content="{{ $setting_web->about }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="canonical" href="Replace_with_your_PAGE_URL" />
@@ -13,12 +16,12 @@
     <!-- Open Graph (OG) meta tags are snippets of code that control how URLs are displayed when shared on social media  -->
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Obero - Free Digital Agency Bootstrap HTML Template" />
-    <meta property="og:url" content="PAGE_URL" />
-    <meta property="og:site_name" content="Obero" />
+    <meta property="og:title" content="{{ $setting_web->name }}" />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:site_name" content="{{ $setting_web->name }}" />
     <!-- For the og:image content, replace the # with a link of an image -->
     <meta property="og:image" content="#" />
-    <meta property="og:description" content="Obero - Free Digital Agency Bootstrap HTML Template" />
+    <meta property="og:description" content="{{ $setting_web->about }}" />
 
     <!-- Fonts -->
     <link
@@ -36,8 +39,8 @@
         {
             "@context": "http://schema.org",
             "@type": "WebSite",
-            "name": "Replace_with_your_site_title",
-            "url": "Replace_with_your_site_URL"
+            "name": "{{ $setting_web->name }}",
+            "url": "{{ request()->url() }}",
         }
     </script>
     <!-- vendor css (Bootstrap & Icon Font) -->
@@ -46,7 +49,7 @@
     <link rel="stylesheet" href="{{ asset('front/css/vendor/flaticon.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/css/vendor/linearicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/css/vendor/simple-line-icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('front/css/vendor/icofont.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('front/css/vendor/icofont_old.min.css') }}" />
 
     <!-- plugins css (All Plugins Files) -->
     <link rel="stylesheet" href="{{ asset('front/css/plugins/animate.css') }}" />

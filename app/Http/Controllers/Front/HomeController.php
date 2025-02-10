@@ -23,7 +23,9 @@ class HomeController extends Controller
     {
         $data = [
             'title' => 'About Page',
-            'description' => 'This is an about page'
+            'description' => 'This is an about page',
+            'setting_web' => SettingWebsite::first()
+
         ];
         return view('front.about', $data);
     }
