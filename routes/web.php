@@ -6,6 +6,7 @@ Route::get('lang', [App\Http\Controllers\LanguageController::class, 'change'])->
 
 Route::get('/', [App\Http\Controllers\Front\HomeController::class, 'index'])->name('front.index');
 Route::get('/visit', [App\Http\Controllers\Front\HomeController::class, 'vistWebsite'])->name('front.visit');
+Route::get('/gallery', [App\Http\Controllers\Front\GalleryController::class, 'index'])->name('front.gallery');
 Route::get('/about', [App\Http\Controllers\Front\HomeController::class, 'about'])->name('front.about');
 Route::get('/contact', [App\Http\Controllers\Front\HomeController::class, 'contact'])->name('front.contact');
 

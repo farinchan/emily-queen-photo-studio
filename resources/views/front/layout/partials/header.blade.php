@@ -31,11 +31,12 @@
                          <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                              <ul class="navigation left-nav clearfix">
                                 <li><a href="{{ route('front.index') }}">{{ __('header.studio') }}</a></li>
-                                 <li class="dropdown"><a href="#">{{ __('header.gallery') }}</a>
+                                <li><a href="{{ route('front.gallery') }}">{{ __('header.gallery') }}</a></li>
+                                 {{-- <li class="dropdown"><a href="#">Test</a>
                                      <ul>
                                          <li><a href="about.html">About Us</a></li>
                                      </ul>
-                                 </li>
+                                 </li> --}}
                              </ul>
 
                              <ul class="navigation right-nav clearfix">
