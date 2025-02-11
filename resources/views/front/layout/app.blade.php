@@ -115,6 +115,47 @@
         <script src="{{ asset('front/js/main_another.js') }}"></script>
     @endif
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R07X4PBV6B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R07X4PBV6B');
+    </script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import {
+            getAnalytics
+        } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBd8fHsKpemCVzIJHZqS9m6Jbxag2y2q-4",
+            authDomain: "torkata-37f33.firebaseapp.com",
+            projectId: "torkata-37f33",
+            storageBucket: "torkata-37f33.firebasestorage.app",
+            messagingSenderId: "1063971755816",
+            appId: "1:1063971755816:web:fcf9b290be4402e5e6621d",
+            measurementId: "G-R07X4PBV6B"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
     @yield('scripts')
 
 </body>

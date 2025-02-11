@@ -123,26 +123,24 @@ class GalleryController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Gallery Foto & Video',
-            'menu' => 'gallery',
-            'sub_menu' => 'gallery_foto_video',
-            'list_gallery_album' => GalleryAlbum::latest()->get(),
+            'title' => 'Gallery Foto',
+            'menu' => 'Post',
+            'sub_menu' => 'Gallery',
+            'list_gallery_album' => GalleryAlbum::all(),
             'list_gallery' => Gallery::latest()->get()
         ];
 
+        // dd($data['list_gallery_album']);
         return view('back.pages.gallery.gallery', $data);
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'type' => 'required',
-            'video' => 'required_if:type,video',
-            'foto' => 'required_if:type,foto|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-            'gallery_album_id' => 'required|exists:gallery_album,id',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'gallery_album_id' => 'required|exists:gallery_albums,id',
         ], [
-            'video.required_if' => 'Video wajib diisi',
-            'foto.required_if' => 'Foto wajib diisi',
+            'foto.required' => 'Foto wajib diisi',
             'gallery_album_id.required' => 'Gallery wajib diisi',
             'gallery_album_id.exists' => 'Gallery tidak ditemukan',
         ]);
@@ -153,18 +151,14 @@ class GalleryController extends Controller
         }
 
         $gallery_foto_video = new Gallery();
-        $gallery_foto_video->type = $request->type;
+        $gallery_foto_video->type = 'foto';
         $gallery_foto_video->gallery_album_id = $request->gallery_album_id;
         $gallery_foto_video->user_id = Auth::user()->id;
 
-        if ($request->type == 'foto') {
-            $foto = $request->file('foto');
-            $foto_name = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('gallery/photo', $foto_name, 'public');
-            $gallery_foto_video->foto = 'gallery/photo/' . $foto_name;
-        } else {
-            $gallery_foto_video->video = $request->video;
-        }
+        $foto = $request->file('foto');
+        $foto_name = time() . '.' . $foto->getClientOriginalExtension();
+        $foto->storeAs('gallery/photo', $foto_name, 'public');
+        $gallery_foto_video->foto = 'gallery/photo/' . $foto_name;
 
         $gallery_foto_video->save();
 
@@ -180,7 +174,7 @@ class GalleryController extends Controller
             'type' => 'required',
             'video' => 'required_if:type,video',
             'foto' => 'required_if:type,foto|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-            'gallery_album_id' => 'required|exists:gallery,id',
+            'gallery_album_id' => 'required|exists:galleries,id',
         ], [
             'video.required_if' => 'Video wajib diisi',
             'foto.required_if' => 'Foto wajib diisi',

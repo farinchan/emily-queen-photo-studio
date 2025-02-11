@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('lang', [App\Http\Controllers\LanguageController::class, 'change'])->name("change.lang");
 
 Route::get('/', [App\Http\Controllers\Front\HomeController::class, 'index'])->name('front.index');
+Route::get('/visit', [App\Http\Controllers\Front\HomeController::class, 'vistWebsite'])->name('front.visit');
 Route::get('/about', [App\Http\Controllers\Front\HomeController::class, 'about'])->name('front.about');
 Route::get('/contact', [App\Http\Controllers\Front\HomeController::class, 'contact'])->name('front.contact');
 
@@ -14,6 +15,7 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 Route::prefix('back')->middleware('auth')->name('back.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Back\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/visitor-stat', [App\Http\Controllers\Back\DashboardController::class, 'visistorStat'])->name('visitor.stat');
 
     Route::prefix('gallery')->name('gallery.')->group(function () {
         Route::get('/album', [App\Http\Controllers\Back\GalleryController::class, 'album'])->name('album');

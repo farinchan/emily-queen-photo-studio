@@ -5,14 +5,13 @@
             <div class="card card-flush">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
-                        <div class="d-flex align-items-center position-relative my-1">
-                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <input type="text" data-kt-ecommerce-product-filter="search"
-                                class="form-control form-control-solid w-250px ps-12" placeholder="Cari galeri" />
-                        </div>
+                        <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
+                            @foreach ($list_gallery_album as $index => $item)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $index == 0 ? 'active' : '' }}" data-bs-toggle="tab" href="#{{ $item->slug }}">{{ $item->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                         <div class="w-100 mw-150px">
@@ -33,82 +32,28 @@
                     </div>
                 </div>
                 <div class="card-body pt-0">
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
-                        <thead>
-                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                <th class="w-10px pe-2">
-                                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                        <input class="form-check-input" type="checkbox" data-kt-check="true"
-                                            data-kt-check-target="#kt_ecommerce_products_table .form-check-input"
-                                            value="1" />
-                                    </div>
-                                </th>
-                                <th class="min-w-200px">Foto/Video</th>
-                                <th class="text-end min-w-100px">Tipe</th>
-                                <th class="text-end min-w-100px">Album</th>
-                                <th class="text-end min-w-100px">Dibuat oleh</th>
-                                <th class="text-end min-w-70px">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="fw-semibold text-gray-600">
-                            @foreach ($list_gallery as $gallery)
-                                <tr>
-                                    <td>
-                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="1" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#preview_galeri{{ $gallery->id }}" class="symbol symbol-150px">
-                                                <span class="symbol-label"
-                                                    style="background-image:url( @if ($gallery->type == 'foto') {{ $gallery->getFoto() }} @else {{ asset('images/default_youtube.png') }} @endif); background-color: #F5F5F5;
-                                                    "></span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        @if ($gallery->type == 'foto')
-                                            <span class="badge badge-light-primary">Foto</span>
-                                        @else
-                                            <span class="badge badge-light-success">Video</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <a href="#" class="text-gray-600 text-hover-primary fw-bolder fs-6">
-                                            {{ $gallery->album->title }}</a>
-
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div class="d-flex justify-content-start flex-column">
-                                            <a href="#" class="text-gray-800 text-hover-primary fw-bolder fs-6">
-                                                {{ $gallery->user->name }}</a>
-                                            <span
-                                                class="text-muted fw-bold">{{ $gallery->created_at->diffForHumans() }}</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                            data-kt-menu="true">
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#edit_category{{ $gallery->id }}">
-                                                    Edit</a>
-                                            </div>
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#delete_news{{ $gallery->id }}">Delete</a>
+                    <div class="tab-content" id="myTabContent">
+                        @foreach ($list_gallery_album as $index => $album)
+                            <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="{{ $album->slug }}">
+                                <div class="row">
+                                    @foreach ($album->gallery as $photo)
+                                        <div class="col-md-3 mb-3">
+                                            <div class="image-input image-input-outline">
+                                                <div class="image-input-wrapper w-250px h-250px" style="background-image: url({{ Storage::url($photo->foto) }})"></div>
+                                                <span data-bs-toggle="modal" data-bs-target="#delete_news{{ $photo->id }}" class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                data-kt-image-input-action="remove"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-dismiss="click"
+                                                title="Remove avatar">
+                                                    <i class="ki-outline ki-cross fs-3"></i>
+                                                </span>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,35 +75,59 @@
                 <form action="{{ route('back.gallery.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        @csrf
+                        <div class="mb-3">
+                            <div>
+                                <label for="description" class="form-label required">Pilih Foto</label>
+                            </div>
+                            <div class="d-flex d-flex justify-content-center">
+                                <div class="image-input image-input-outline " data-kt-image-input="true" style="background-image: url({{ asset('back/media/svg/avatars/blank.svg') }})">
+                                    <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('back/media/svg/avatars/blank.svg') }})"></div>
+                                    <label class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="change"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-dismiss="click"
+                                    title="Change avatar">
+                                        <i class="ki-duotone ki-pencil fs-6"><span class="path1"></span><span class="path2"></span></i>
+
+                                        <!--begin::Inputs-->
+                                        <input type="file" name="foto" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="avatar_remove" />
+                                        <!--end::Inputs-->
+                                    </label>
+                                    <!--end::Edit button-->
+
+                                    <!--begin::Cancel button-->
+                                    <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="cancel"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-dismiss="click"
+                                    title="Cancel avatar">
+                                        <i class="ki-outline ki-cross fs-3"></i>
+                                    </span>
+                                    <!--end::Cancel button-->
+
+                                    <!--begin::Remove button-->
+                                    <span class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="remove"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-dismiss="click"
+                                    title="Remove avatar">
+                                        <i class="ki-outline ki-cross fs-3"></i>
+                                    </span>
+                                    <!--end::Remove button-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Image input-->
                         <div class="mb-3">
                             <label for="description" class="form-label required">Pilih Album</label>
                             <select class="form-select form-select-solid" name="gallery_album_id" required>
-                                <option value="">Pilih album</option>
+                                <option selected disabled>Pilih album</option>
                                 @foreach ($list_gallery_album as $album)
                                     <option value="{{ $album->id }}">{{ $album->title }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="name" class=" form-label required">Foto/Video</label>
-                            <select class="form-select form-select-solid" name="type" id="type"required>
-                                <option value="">Pilih Tipe</option>
-                                <option value="foto">Foto</option>
-                                <option value="video">Video</option>
-                            </select>
-                        </div>
-                        <div id="type_galeri"></div>
-                        {{-- <div class="mb-3">
-                            <label for="name" class=" form-label required">Foto</label>
-                            <input type="file" class="form-control form-control-solid" id="thumbnail" name="thumbnail" required>
-                                <small class="text-muted">Foto harus berformat jpg, jpeg, png, atau gif, dengan ukuran maksimal 4MB</small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="video" class="form-label required">Link youtube</label>
-                            <textarea class="form-control form-control-solid" id="video" name="video" rows="3"
-                                placeholder="Link vide youtube"></textarea>
-                        </div> --}}
                     </div>
 
                     <div class="modal-footer">

@@ -22,7 +22,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Default</span>
+                                <span class="menu-title">Visitor</span>
                             </a>
                         </div>
 
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.gallery.setting')) active @endif"
+                    <a class="menu-link @if (request()->routeIs('back.testimonial.index')) active @endif"
                         href="{{ route('back.testimonial.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-like-tag fs-2">

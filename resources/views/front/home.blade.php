@@ -1367,5 +1367,17 @@
 
 @section("scripts")
 <script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+<script>
+    $.ajax({
+        url: "{{ route('front.visit') }}",
+        type: "GET",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+</script>
 
 @endsection
