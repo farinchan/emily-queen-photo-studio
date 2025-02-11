@@ -3,21 +3,44 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\GalleryAlbum;
 use App\Models\Message;
 use App\Models\SettingWebsite;
+use App\Models\Testimonial;
+use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $tr = new GoogleTranslate();
+        $tr->setSource('id');
+        $tr->setTarget('en');
+        $setting_web = SettingWebsite::first();
+
+        $short_about = '';
+        if (app()->getLocale() == 'id') {
+            $short_about = Str::limit($setting_web->about ?? "", 200);
+        } else {
+            $short_about = Str::limit($tr->translate($setting_web->about ?? ""), 200);
+        }
+
+
         $data = [
             'title' => 'Home Page',
-            'description' => 'This is a home page'
+            'description' => 'This is a home page',
+            'short_about' => $short_about,
+            'setting_web' => $setting_web,
+            'team' => User::all(),
+            'testimonial' => Testimonial::all(),
+            'gallery' => GalleryAlbum::all(),
         ];
 
         return view('front.home', $data);
@@ -52,10 +75,24 @@ class HomeController extends Controller
 
     public function about()
     {
+        $tr = new GoogleTranslate();
+        $tr->setSource('id');
+        $tr->setTarget('en');
+        $setting_web = SettingWebsite::first();
+        $about = '';
+        if (app()->getLocale() == 'id') {
+            $about = $setting_web->about;
+        } else {
+
+            $about = $tr->translate($setting_web->about);
+        }
+
         $data = [
             'title' => 'About Page',
             'description' => 'This is an about page',
-            'setting_web' => SettingWebsite::first()
+            'setting_web' => $setting_web,
+            'about' => $about,
+            'team' => User::all(),
 
         ];
         return view('front.about', $data);

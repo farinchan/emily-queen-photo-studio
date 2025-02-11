@@ -23,7 +23,7 @@
             <div class="title-box">
                 <h2>{{ $setting_web->name }}</h2>
                 <div class="text">
-                    {{ $setting_web->about }}
+                    {{ $about }}
                 </div>
             </div>
 
@@ -62,313 +62,56 @@
         </div>
     </section>
 
-        <!-- Team Section -->
-        <section class="team-section">
-            <div class="auto-container wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="sec-title centered mb-70px">
-                    <h2 class="mb-40px">our team</h2>
-                    <div class="text">Professional & Friendly is our slogan. Meet our team, you will <br> feel like living at
-                        your home </div>
+       <!-- Team Section -->
+    <section class="team-section">
+        <div class="auto-container wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+            <div class="sec-title centered mb-70px">
+                <h2 class="mb-40px">{{ __('studio.our_team') }}</h2>
+                <div class="text">
+                    {!! __('studio.team_description') !!}
                 </div>
-                <div class="team-wrapper">
+            </div>
+            <div class="team-wrapper">
 
-                    <!-- Team Block -->
+                @foreach ($team as $item)
                     <div class="team-block">
                         <div class="inner-box">
                             <div class="image">
-                                <img src="{{ asset('front/images/resource/team-1.jpg') }}" alt="" />
+                                <img src="{{ $item->getPhoto() }}" alt="" />
                             </div>
                             <div class="lower-box">
-                                <h6>alberto kayel</h6>
-                                <div class="designation">CEO Founder</div>
+                                <h6>{{ $item->name }}</h6>
+                                <div class="designation">{{ $item->position }}</div>
                             </div>
                             <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
+                                <div class="text">“{{ $item->about }}”
                                 </div>
                                 <!-- Social Box -->
                                 <ul class="social-box">
                                     <li class="share">social:</li>
                                     <li>
-                                        <a href="#" class="icon-social-twitter"></a>
+                                        <a href="{{ $item->twiter }}" class="icon-social-twitter"></a>
                                     </li>
                                     <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
+                                        <a href="{{ $item->tiktok }}" class="icon-social-dribbble"></a>
                                     </li>
                                     <li>
-                                        <a href="#" class="icon-social-instagram"></a>
+                                        <a href="{{ $item->instagram }}" class="icon-social-instagram"></a>
                                     </li>
                                     <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
+                                        <a href="{{ $item->linkedin }}" class="icon-social-linkedin"></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-2.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>Calvin Harris</h6>
-                                <div class="designation">CO Founder</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-3.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>gabriel eldo</h6>
-                                <div class="designation">Art Director</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-4.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>Bruce wayne</h6>
-                                <div class="designation">Marketing Director</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-5.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>elia giovani</h6>
-                                <div class="designation">Product Manager</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-6.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>dalton garrin</h6>
-                                <div class="designation">UI/UX Designer</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-7.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>maria slovakia</h6>
-                                <div class="designation">Developer</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('front/images/resource/team-8.jpg') }}" alt="" />
-                            </div>
-                            <div class="lower-box">
-                                <h6>luther frankil</h6>
-                                <div class="designation">Content Executive</div>
-                            </div>
-                            <div class="overlay-content">
-                                <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                    dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                    luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                    elit.”
-                                </div>
-                                <!-- Social Box -->
-                                <ul class="social-box">
-                                    <li class="share">social:</li>
-                                    <li>
-                                        <a href="#" class="icon-social-twitter"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-dribbble"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-instagram"></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="icon-social-linkedin"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="button-box text-center wow fadeInUp mt-20px" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <a href="contact.html" class="theme-btn btn-style-three"><span class="txt">Join Our Team</span></a>
-                </div>
+                @endforeach
 
             </div>
-        </section>
-        <!-- End Team Section -->
+
+        </div>
+    </section>
+    <!-- End Team Section -->
 
     <!-- Contact Info Section -->
     <section class="contact-info-section">

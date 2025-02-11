@@ -42,15 +42,16 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-start">
-                    <h2 class="wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">Bigger, Bolder <br> & Better
+                    <h2 class="wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        {{ $setting_web->name }}
                     </h2>
-                    <div class="text wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">We are a fairly small,
-                        flexible design studio that designs for print and web. Whether you need to create a brand from
-                        scratch, including marketing and a beautiful and functional website or whether you are looking for a
-                        great experience.
+                    <div class="text wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        {{ $short_about }}
                     </div>
                     <div class="button-box d-flex clearfix wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <a href="about.html" class="theme-btn btn-style-one"><span class="txt">About Us</span></a>
+                        <a href="{{ route("front.about") }}" class="theme-btn btn-style-one"><span class="txt">
+                            {{ __('studio.about_us') }}
+                            </span></a>
                         <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-box"><span
                                 class="icon-control-play"><i class="ripple"></i></span><strong>see our <br>
                                 story</strong></a>
@@ -65,8 +66,8 @@
     <section class="services-section">
         <div class="auto-container">
             <div class="sec-title d-flex justify-content-between">
-                <h2>our services</h2>
-                <a href="#" class="see-all">all services</a>
+                <h2>{{ __('studio.our_service') }}</h2>
+                <a href="#" class="see-all">{{ __('studio.all_service') }}</a>
             </div>
             <div class="row clearfix m-0">
 
@@ -78,7 +79,7 @@
                         <img src="{{ asset('front/images/service/1.jpg') }}" alt="">
                         <div class="number">one</div>
                         <div class="icon icon-vector"></div>
-                        <h4><a href="project-detail.html">Idea & Concept</a></h4>
+                        <h4><a href="project-detail.html">Foto Group</a></h4>
                         <div class="text">Introduction and kick-off meeting checklist. Lorem im dolor sit amet.
                         </div>
                     </div>
@@ -90,7 +91,7 @@
                         <img src="{{ asset('front/images/service/1.jpg') }}" alt="">
                         <div class="number">two</div>
                         <div class="icon icon-screen-desktop"></div>
-                        <h4><a href="project-detail.html">Design & Coding</a></h4>
+                        <h4><a href="project-detail.html">Wedding </a></h4>
                         <div class="text">Lorem ispum dolor sit ame photon nomibul lateio nos ier phara graphy myieo sir
                         </div>
                     </div>
@@ -102,7 +103,7 @@
                         <img src="{{ asset('front/images/service/1.jpg') }}" alt="">
                         <div class="number">three</div>
                         <div class="icon icon-speech"></div>
-                        <h4><a href="project-detail.html">Support & Secure</a></h4>
+                        <h4><a href="project-detail.html">Foto Ijazah</a></h4>
                         <div class="text">Lorem ispum dolor sit ame photon nomibul lateio nos ier phara graphy myieo sir
                         </div>
                     </div>
@@ -119,8 +120,8 @@
 
             <!-- Sec Title -->
             <div class="sec-title d-flex justify-content-between">
-                <h2>Latest Works</h2>
-                <a href="#" class="see-all">all projects</a>
+                <h2>{{ __('studio.gallery') }}</h2>
+                <a href="{{ route("front.gallery") }}" class="see-all">{{ __('studio.all_gallery') }}</a>
             </div>
 
         </div>
@@ -135,10 +136,9 @@
                     <!--Tabs Header-->
                     <div class="tabs-header">
                         <ul class="product-tab-btns clearfix">
-                            <li class="p-tab-btn active-btn" data-tab="#p-tab-1">all</li>
-                            <li class="p-tab-btn" data-tab="#p-tab-2">web/app</li>
-                            <li class="p-tab-btn" data-tab="#p-tab-3">branding</li>
-                            <li class="p-tab-btn" data-tab="#p-tab-4">motion</li>
+                            @foreach ($gallery as $index => $item)
+                                <li class="p-tab-btn {{ $index == 0 ? 'active-btn' : '' }}" data-tab="#{{ $item->slug }}">{{ $item->title }}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -146,519 +146,25 @@
                 <!--Tabs Content-->
                 <div class="p-tabs-content">
 
-                    <!--Portfolio Tab / Active Tab-->
-                    <div class="p-tab active-tab" id="p-tab-1">
-                        <div class="project-carousel owl-theme owl-carousel">
+                    @foreach ($gallery as $index => $album)
+                        <div class="p-tab {{ $index == 0 ? 'active-tab' : '' }}" id="{{ $album->slug }}">
+                            <div class="project-carousel owl-theme owl-carousel">
 
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img src="{{ asset('front/images/gallery/1.jpg') }}"
-                                                alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
+                                @foreach ($album->gallery as $photo)
+                                    <div class="project-block">
+                                        <div class="inner-box">
+                                            <div class="image">
+                                                <a href="project-detail.html"><img src="{{ Storage::url($photo->foto) }}"
+                                                        alt="" /></a>
                                             </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                @endforeach
 
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img src="{{ asset('front/images/gallery/2.jpg') }}"
-                                                alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Consulting</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img src="{{ asset('front/images/gallery/3.jpg') }}"
-                                                alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Store</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-
-                    <!-- Portfolio Tab -->
-                    <div class="p-tab" id="p-tab-2">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Portfolio Tab -->
-                    <div class="p-tab" id="p-tab-3">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Portfolio Tab -->
-                    <div class="p-tab" id="p-tab-4">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/2.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Norda Minimal Store Online</a>
-                                                </h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/3.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Patricia Davis</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Block -->
-                            <div class="project-block">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="project-detail.html"><img
-                                                src="{{ asset('front/images/gallery/1.jpg') }}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-box">
-                                        <div class="clearfix">
-                                            <div class="pull-left">
-                                                <h4><a href="project-detail.html">Curology</a></h4>
-                                            </div>
-                                            <div class="pull-right">
-                                                <div class="category">Web/App, Branding</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
@@ -672,304 +178,47 @@
     <section class="team-section">
         <div class="auto-container wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
             <div class="sec-title centered mb-70px">
-                <h2 class="mb-40px">our team</h2>
-                <div class="text">Professional & Friendly is our slogan. Meet our team, you will <br> feel like living at
-                    your home </div>
+                <h2 class="mb-40px">{{ __('studio.our_team') }}</h2>
+                <div class="text">
+                    {!! __('studio.team_description') !!}
+                </div>
             </div>
             <div class="team-wrapper">
 
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-1.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>alberto kayel</h6>
-                            <div class="designation">CEO Founder</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
+                @foreach ($team as $item)
+                    <div class="team-block">
+                        <div class="inner-box">
+                            <div class="image">
+                                <img src="{{ $item->getPhoto() }}" alt="" />
                             </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
+                            <div class="lower-box">
+                                <h6>{{ $item->name }}</h6>
+                                <div class="designation">{{ $item->position }}</div>
+                            </div>
+                            <div class="overlay-content">
+                                <div class="text">“{{ $item->about }}”
+                                </div>
+                                <!-- Social Box -->
+                                <ul class="social-box">
+                                    <li class="share">social:</li>
+                                    <li>
+                                        <a href="{{ $item->twiter }}" class="icon-social-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $item->tiktok }}" class="icon-social-dribbble"></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $item->instagram }}" class="icon-social-instagram"></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $item->linkedin }}" class="icon-social-linkedin"></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>Calvin Harris</h6>
-                            <div class="designation">CO Founder</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-3.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>gabriel eldo</h6>
-                            <div class="designation">Art Director</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-4.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>Bruce wayne</h6>
-                            <div class="designation">Marketing Director</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-5.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>elia giovani</h6>
-                            <div class="designation">Product Manager</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-6.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>dalton garrin</h6>
-                            <div class="designation">UI/UX Designer</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-7.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>maria slovakia</h6>
-                            <div class="designation">Developer</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('front/images/resource/team-8.jpg') }}" alt="" />
-                        </div>
-                        <div class="lower-box">
-                            <h6>luther frankil</h6>
-                            <div class="designation">Content Executive</div>
-                        </div>
-                        <div class="overlay-content">
-                            <div class="text">“Lorem ipsum dolor sit amet, consectetur adipi-<br>scing elit. Nullam
-                                dignissim tortor vitae mattis tempor. Pellentesque a neque tincidunt, tempor felis ut,
-                                luctus ante. Lorem ispu ipsum dolor sit amet, consectetur adipiscing
-                                elit.”
-                            </div>
-                            <!-- Social Box -->
-                            <ul class="social-box">
-                                <li class="share">social:</li>
-                                <li>
-                                    <a href="#" class="icon-social-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-dribbble"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-instagram"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="icon-social-linkedin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="button-box text-center wow fadeInUp mt-20px" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <a href="contact.html" class="theme-btn btn-style-three"><span class="txt">Join Our Team</span></a>
             </div>
 
         </div>
@@ -980,7 +229,7 @@
     <section class="pricing-section">
         <div class="auto-container">
             <div class="sec-title centered mb-50px">
-                <h2 class="mb-38px">start with an affordable price</h2>
+                <h2 class="mb-38px">{{ __('studio.price_title') }}</h2>
                 <div class="text">You can choose pay in monthly or annualy. Don’t worry! <br> you can cancel anytime
                 </div>
             </div>
@@ -1226,70 +475,25 @@
     <section class="testimonial-section">
         <div class="auto-container">
             <div class="sec-title">
-                <h2>testimonial</h2>
+                <h2>{{ __('studio.testimonial') }}</h2>
             </div>
             <div class="two-item-carousel owl-carousel owl-theme wow fadeInUp" data-wow-delay="0ms"
                 data-wow-duration="1500ms">
 
-                <!-- Testimonial Block -->
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="content">
-                            <div class="author-image">
-                                <img src="{{ asset('front/images/resource/author-1.jpg') }}" alt="" />
+                @foreach ($testimonial as $item)
+                    <div class="testimonial-block">
+                        <div class="inner-box">
+                            <div class="content">
+                                <div class="author-image">
+                                    <img src="{{ Storage::url($item->photo) }}" alt="" />
+                                </div>
+                                <div class="quote-icon icon_quotations"></div>
+                                <div class="author">{{ $item->name }} <span>/ {{ $item->position }} {{ __('studio.at') }}</span> <i>{{ $item->company }}</i></div>
+                                <div class="text">{{ $item->content }}</div>
                             </div>
-                            <div class="quote-icon icon_quotations"></div>
-                            <div class="author">Adam Stone <span>/ CEO at</span> <i>Google INC</i></div>
-                            <div class="text">Sed elit quam, iaculis sed semper sit amet udin vitae nibh,at magna akal
-                                semperFusce commodo molestie luctus. Dolor tusima olatiup.</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Testimonial Block -->
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="content">
-                            <div class="author-image">
-                                <img src="{{ asset('front/images/resource/author-2.jpg') }}" alt="" />
-                            </div>
-                            <div class="quote-icon icon_quotations"></div>
-                            <div class="author">Anabella Kleva <span>/ Managerment at</span> <i>Envato</i></div>
-                            <div class="text">Sed elit quam, iaculis sed semper sit amet udin vitae nibh,at magna akal
-                                semperFusce commodo molestie luctus. Dolor tusima olatiup.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial Block -->
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="content">
-                            <div class="author-image">
-                                <img src="{{ asset('front/images/resource/author-1.jpg') }}" alt="" />
-                            </div>
-                            <div class="quote-icon icon_quotations"></div>
-                            <div class="author">Adam Stone <span>/ CEO at</span> <i>Google INC</i></div>
-                            <div class="text">Sed elit quam, iaculis sed semper sit amet udin vitae nibh,at magna akal
-                                semperFusce commodo molestie luctus. Dolor tusima olatiup.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial Block -->
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="content">
-                            <div class="author-image">
-                                <img src="{{ asset('front/images/resource/author-2.jpg') }}" alt="" />
-                            </div>
-                            <div class="quote-icon icon_quotations"></div>
-                            <div class="author">Anabella Kleva <span>/ Managerment at</span> <i>Envato</i></div>
-                            <div class="text">Sed elit quam, iaculis sed semper sit amet udin vitae nibh,at magna akal
-                                semperFusce commodo molestie luctus. Dolor tusima olatiup.</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
