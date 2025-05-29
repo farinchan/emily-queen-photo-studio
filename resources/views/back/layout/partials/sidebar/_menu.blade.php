@@ -165,38 +165,38 @@
                     </a>
                 </div>
 
-                <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion @if (request()->routeIs('back.setting.*')) here show @endif">
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-setting-2 fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
+                    <div data-kt-menu-trigger="click"
+                        class="menu-item menu-accordion @if (request()->routeIs('back.setting.*')) here show @endif">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-setting-2 fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Pengaturan</span>
+                            <span class="menu-arrow"></span>
                         </span>
-                        <span class="menu-title">Pengaturan</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.setting.website')) active @endif"
-                                href="{{ route('back.setting.website') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Website</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Banner</span>
-                            </a>
+                        <div class="menu-sub menu-sub-accordion">
+                            <div class="menu-item">
+                                <a class="menu-link @if (request()->routeIs('back.setting.website')) active @endif"
+                                    href="{{ route('back.setting.website') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Website</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Banner</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
 

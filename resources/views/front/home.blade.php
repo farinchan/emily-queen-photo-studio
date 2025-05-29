@@ -49,8 +49,8 @@
                         {{ $short_about }}
                     </div>
                     <div class="button-box d-flex clearfix wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <a href="{{ route("front.about") }}" class="theme-btn btn-style-one"><span class="txt">
-                            {{ __('studio.about_us') }}
+                        <a href="{{ route('front.about') }}" class="theme-btn btn-style-one"><span class="txt">
+                                {{ __('studio.about_us') }}
                             </span></a>
                         <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-box"><span
                                 class="icon-control-play"><i class="ripple"></i></span><strong>see our <br>
@@ -121,7 +121,7 @@
             <!-- Sec Title -->
             <div class="sec-title d-flex justify-content-between">
                 <h2>{{ __('studio.gallery') }}</h2>
-                <a href="{{ route("front.gallery") }}" class="see-all">{{ __('studio.all_gallery') }}</a>
+                <a href="{{ route('front.gallery') }}" class="see-all">{{ __('studio.all_gallery') }}</a>
             </div>
 
         </div>
@@ -137,7 +137,8 @@
                     <div class="tabs-header">
                         <ul class="product-tab-btns clearfix">
                             @foreach ($gallery as $index => $item)
-                                <li class="p-tab-btn {{ $index == 0 ? 'active-btn' : '' }}" data-tab="#{{ $item->slug }}">{{ $item->title }}</li>
+                                <li class="p-tab-btn {{ $index == 0 ? 'active-btn' : '' }}"
+                                    data-tab="#{{ $item->slug }}">{{ $item->title }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -230,7 +231,8 @@
         <div class="auto-container">
             <div class="sec-title centered mb-50px">
                 <h2 class="mb-38px">{{ __('studio.price_title') }}</h2>
-                <div class="text">You can choose pay in monthly or annualy. Don’t worry! <br> you can cancel anytime
+                <div class="text">
+                    {!! __('studio.price_description') !!}
                 </div>
             </div>
             <div class="inner-container">
@@ -242,9 +244,9 @@
 
                         <!-- Tab Btns -->
                         <ul class="tab-buttons clearfix">
-                            <li data-tab="#prod-monthly" class="tab-btn monthly active-btn">Billed monthly</li>
-                            <li class="boll"><span class="round"></span></li>
-                            <li data-tab="#prod-yearly" class="tab-btn yearly">Billed annually</li>
+                            <li data-tab="#prod-monthly" class="tab-btn monthly active-btn">Foto Ijazah</li>
+                            {{-- <li class="boll"><span class="round"></span></li> --}}
+                            <li data-tab="#prod-yearly" class="tab-btn yearly">Foto Wedding</li>
                         </ul>
 
                     </div>
@@ -261,8 +263,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">Free</div>
+                                            <div class="title">paket 1</div>
+                                            <div class="price">Rp.xxxx</div>
                                             <div class="text">Free with 14 days trial, then you can choose plan
                                             </div>
                                             <ul class="price-list">
@@ -270,8 +272,13 @@
                                                 <li>1 Dashboard</li>
                                                 <li>5 Projects</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three">
+                                                <span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -279,8 +286,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12 ">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$59 <span>/ Month</span></div>
+                                            <div class="title">Paket 2</div>
+                                            <div class="price">Rp.xxxx </div>
                                             <div class="text">Billed anually or pay $59 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>3 User</li>
@@ -288,8 +295,12 @@
                                                 <li>10 Projects</li>
                                                 <li>Custom CSS</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -297,8 +308,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12 ">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$99 <span>/ Month</span></div>
+                                            <div class="title">paket 3</div>
+                                            <div class="price">Rp.xxxx </div>
                                             <div class="text">Billed anually or pay $99 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>20 Users</li>
@@ -306,8 +317,12 @@
                                                 <li>50 Projects</li>
                                                 <li>Custome CSS + HTML</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -315,8 +330,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$129 <span>/ Month</span></div>
+                                            <div class="title">paket 4</div>
+                                            <div class="price">Rp.xxxx </div>
                                             <div class="text">Billed anually or pay $129 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>50 Users</li>
@@ -325,8 +340,12 @@
                                                 <li>Custom CSS + HTML</li>
                                                 <li>Custom Domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -343,7 +362,7 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
+                                            <div class="title">paket</div>
                                             <div class="price">Free</div>
                                             <div class="text">Free with 14 days trial, then you can choose plan
                                             </div>
@@ -352,8 +371,12 @@
                                                 <li>1 Dashboard</li>
                                                 <li>5 Projects</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -361,8 +384,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$59 <span>/ Month</span></div>
+                                            <div class="title">paket</div>
+                                            <div class="price">$59 </div>
                                             <div class="text">Billed anually or pay $59 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>3 User</li>
@@ -370,8 +393,12 @@
                                                 <li>10 Projects</li>
                                                 <li>Custom CSS</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -379,8 +406,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12 ">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$99 <span>/ Month</span></div>
+                                            <div class="title">paket</div>
+                                            <div class="price">$99 </div>
                                             <div class="text">Billed anually or pay $99 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>20 Users</li>
@@ -388,8 +415,12 @@
                                                 <li>50 Projects</li>
                                                 <li>Custome CSS + HTML</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -397,8 +428,8 @@
                                     <div class="price-block col-lg-3 col-md-6 col-sm-12 ">
                                         <div class="inner-box wow fadeInUp" data-wow-delay="0ms"
                                             data-wow-duration="1500ms">
-                                            <div class="title">basic</div>
-                                            <div class="price">$129 <span>/ Month</span></div>
+                                            <div class="title">paket</div>
+                                            <div class="price">$129 </div>
                                             <div class="text">Billed anually or pay $129 month-to-month</div>
                                             <ul class="price-list">
                                                 <li>50 Users</li>
@@ -407,8 +438,12 @@
                                                 <li>Custom CSS + HTML</li>
                                                 <li>Custom Domain</li>
                                             </ul>
-                                            <a href="#" class="theme-btn btn-style-three"><span class="txt">Get
-                                                    Started Now</span></a>
+                                            <a href="https://wa.me" class="theme-btn btn-style-three"><span class="txt">
+                                                    <img src="{{ asset('back/media/svg/social-logos/whatsapp.svg') }}"
+                                                        alt="" style="width: 20px; height: 20px;">
+
+                                                    Pesan sekarang
+                                                </span></a>
                                         </div>
                                     </div>
 
@@ -421,8 +456,8 @@
                 </div>
 
                 <!-- Lower Text -->
-                <div class="lower-text wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">You have a large
-                    team? <a href="contact.html">Contact us</a> for information about more enterprise options
+                <div class="lower-text wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    {!! __('studio.price_more') !!}
                 </div>
 
             </div>
@@ -488,7 +523,8 @@
                                     <img src="{{ Storage::url($item->photo) }}" alt="" />
                                 </div>
                                 <div class="quote-icon icon_quotations"></div>
-                                <div class="author">{{ $item->name }} <span>/ {{ $item->position }} {{ __('studio.at') }}</span> <i>{{ $item->company }}</i></div>
+                                <div class="author">{{ $item->name }} <span>/ {{ $item->position }}
+                                        {{ __('studio.at') }}</span> <i>{{ $item->company }}</i></div>
                                 <div class="text">{{ $item->content }}</div>
                             </div>
                         </div>
@@ -504,7 +540,8 @@
             <div class="sec-title">
                 <h2>Instagram Post</h2>
             </div>
-            <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2152457" data-tags="false"  view-url="https://widget.tagembed.com/2152457"></div>
+            <div class="tagembed-widget" style="width:100%;height:100%" data-widget-id="2152457" data-tags="false"
+                view-url="https://widget.tagembed.com/2152457"></div>
         </div>
     </section>
 
@@ -569,19 +606,18 @@
     <!--End Clients Section-->
 @endsection
 
-@section("scripts")
-<script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
-<script>
-    $.ajax({
-        url: "{{ route('front.visit') }}",
-        type: "GET",
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-</script>
-
+@section('scripts')
+    <script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+    <script>
+        $.ajax({
+            url: "{{ route('front.visit') }}",
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    </script>
 @endsection
